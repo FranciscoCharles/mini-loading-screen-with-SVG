@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgb(15, 15, 15);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container{
+    position: relative;
+    height: 300px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(2, 204, 2, 0.514),
+                inset 0 0 10px rgb(105, 105, 105);
+}
+.container > .container-circle{
+    position: relative;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    box-shadow: 0 0 25px rgb(2, 204, 2);
+}
+.inner-circle-shadow{
+    position: absolute;
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 25px rgb(2, 204, 2);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.container > .container-circle.active-shadow,
+.inner-circle-shadow.active-shadow{
+    box-shadow: none;
+}
+.container-circle .percent-text{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    transform: translate(-50%,-50%);
+}
+.container-circle .percent-text span{
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(1, 182, 1);
+    -webkit-text-stroke: 2px rgb(0, 116, 0);
+    transform: translate(-50%,-50%);
+}
+.container-circle svg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.container-circle svg circle:first-child,
+.container-circle svg circle:nth-child(2){
+    stroke: rgb(53, 49, 49);
+    stroke-width: 20px;
+    fill:none;
+}
+.container-circle svg circle:nth-child(2){
+    fill:none;
+    stroke: rgb(15, 15, 15);
+    stroke-width: 12px;
+}
+.container-circle svg circle:nth-child(3){
+    fill:none;
+    stroke-width: 10;
+    stroke: rgb(0, 116, 0);
+    stroke-width: 20px;
+    stroke-dasharray: 377;
+    stroke-dashoffset: calc(377 - var(--percent) * 377);
+}
+
+.container-circle svg :nth-child(4){
+    width: 100px;
+    height: 100px;
+    fill:none;
+    stroke-width: 12;
+    stroke: rgb(1, 182, 1);
+    stroke-dasharray: 377;
+    stroke-dashoffset: calc(377 - var(--percent) * 377);
+}
+.container-circle svg rect{
+    
+    fill: rgb(0, 116, 0);
+}
+.container button{
+    margin-top: 20px;
+    background: transparent;
+    color:rgb(1, 182, 1);
+    border:none;
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    -webkit-text-stroke: 2px rgb(0, 116, 0);
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+.container button:hover{
+    background: black;
+    -webkit-text-stroke: transparent;
+    font-weight: bolder;
+    font-size: 24px;
+    box-shadow: 0 0 25px rgb(2, 204, 2),
+                inset 0 0 24px rgb(2, 204, 2);
+    backdrop-filter: blur(5px);
+    letter-spacing: 2px;
+}
