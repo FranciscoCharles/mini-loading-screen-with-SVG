@@ -16,10 +16,10 @@
 	const MILLISECONDS = 100;
 
 	function resetState() {
-		firstRect.style.setProperty('visibility', 'visible');
+		firstRect.style.setProperty('visibility', 'hidden');
 
-		containerCircle.classList.remove('active-shadow');
-		innerCircleShadow.classList.remove('active-shadow');
+		containerCircle.classList.remove('remove-box-shadow');
+		innerCircleShadow.classList.remove('remove-box-shadow');
 
 		lastCircle.style.setProperty('--percent', 0);
 		firstCircle.style.setProperty('--percent', 0);
@@ -33,27 +33,32 @@
 	function updatePercent() {
 		percent += 0.01;
 		percentTmp = percent + 0.01;
+
 		if (percent >= 1) {
 			percent = 1;
 			percentTmp = 1;
 			isStopped = true;
 			playBtn.textContent = 'Play';
 			firstRect.style.setProperty('visibility', 'hidden');
-			containerCircle.classList.add('active-shadow');
-			innerCircleShadow.classList.add('active-shadow');
+			containerCircle.classList.add('remove-box-shadow');
+			innerCircleShadow.classList.add('remove-box-shadow');
 		}
+
 		textPercent.textContent = `${(100 * percent).toFixed(0)}%`;
 		lastCircle.style.setProperty('--percent', percent);
 		firstCircle.style.setProperty('--percent', percentTmp);
 		return percent;
 	}
-	
+
 	function startLoading() {
 		idInterval = setInterval(() => {
+			if (percent === 0 && firstRect.style.visibility !== 'visible') {
+				firstRect.style.setProperty('visibility', 'visible');
+			}
 			if (updatePercent() >= 1) clearInterval(idInterval);
 		}, MILLISECONDS);
 	}
-	
+
 	function toogleStateLoad() {
 		if (percent >= 1) resetState();
 		isStopped = !isStopped;

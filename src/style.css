@@ -40,8 +40,8 @@ body{
     left:50%;
     transform: translate(-50%,-50%);
 }
-.container > .container-circle.active-shadow,
-.inner-circle-shadow.active-shadow{
+.container > .container-circle.remove-box-shadow,
+.inner-circle-shadow.remove-box-shadow{
     box-shadow: none;
 }
 .container-circle .percent-text{
@@ -103,7 +103,7 @@ body{
     stroke-dashoffset: calc(377 - var(--percent) * 377);
 }
 .container-circle svg rect{
-    
+    visibility: hidden;
     fill: rgb(0, 116, 0);
 }
 .container button{
